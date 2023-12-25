@@ -36,12 +36,37 @@
                 <td class="institution">{{content.institution}}</td>
               </tr>
               {% endif %}
+
               {% if content.department %}
               <tr>
                 <td style="vertical-align: top; text-align: center;" class="department"><i class="fa-regular fa-circle-dot icondepartment"></i></td>
-                <td class="department">{{content.department}}</td>
+                <td class="department">
+                {% if content.department_link %}
+                  <a href="{{ content.department_link }}" target="_blank">{{ content.department }}</a>
+                {% else %}
+                  {{ content.department }}
+                {% endif %}
+                </td>
               </tr>
               {% endif %}
+
+
+              {% if content.supervisor %}
+            <tr>
+              <td style="vertical-align: top; text-align: center;" class="supervisor">
+                <i class="fa-solid fa-user-tie iconsupervisor"></i>
+              </td>
+              <td class="supervisor">
+                {% if content.supervisor_link %}
+                  <a href="{{ content.supervisor_link }}" target="_blank">{{ content.supervisor }}</a>
+                {% else %}
+                  {{ content.supervisor }}
+                {% endif %}
+              </td>
+            </tr>
+            {% endif %}
+
+
             </tbody>
             </table>
             {% endif %}
