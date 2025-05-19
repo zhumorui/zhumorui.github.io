@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="M3CAD: Towards Generic Cooperative Autonomous Driving Benchmark">
+  <meta name="keywords" content="M3CAD, Cooperative Autonomous Driving, Benchmark, Multi-Task, End-to-End Planning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M3CAD: Towards Generic Cooperative Autonomous Driving Benchmark</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+  <script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <style>
+    .rcorners1 {
+      border-radius: 10px;
+      background: #ffffffd0;
+      padding: 5px;
+      font-size: 120%;
+      color: #5c5c5c;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">M<sup>3</sup>CAD<br />
+              <p class="title is-3 publication-title">Towards Generic Cooperative Autonomous Driving Benchmark</p>
+            </h1>
+            <h1 class="title is-4" style="color: #5c5c5c;"> </h1>
+            <h1 class="title is-6" style="color: #5c5c5c; margin-top:-10px;">
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://zhumorui.github.io/">Morui Zhu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a >Yongqi Zhu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a >Yihao Zhu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a >Qi Chen</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a >Deyuan Qu</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a >Song Fu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a >Qing Yang</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>University of North Texas,</span>
+              <span class="author-block"><sup>2</sup>Toyota InfoTech Labs</span>
+            </div>
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2505.06746" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/zhumorui/M3CAD" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fa fa-database"></i>
+                </span>
+                <span>Dataset (Coming Soon)</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./img/m3cad_multi_tasks.png" alt="Project Teaser Placeholder" style="max-width:100%" />
+        <h2 class="subtitle has-text-centered">
+          Illustrations of various autonomous driving tasks using the M3CAD dataset. (a), (b), (d),
+and (e) show sample images captured from the vehicle's four cameras. (a) Demonstrates the <strong>path
+planning (PP)</strong> results, where the ego vehicle's predicted trajectory is represented by a dotted line.
+(b) Shows <strong>object tracking (OT)</strong> and <strong>motion forecasting (MF)</strong> results where dotted lines represent
+predicted trajectories of other vehicles. (c) Presents <strong>object detection (OD)</strong> results in 3D space. (f)
+Depicts <strong>mapping (MP)</strong> and <strong>occupancy prediction (OCC)</strong> results.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- News. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">News 📰</h2>
+          <div class="content has-text-justified">
+            <ul>
+              <!-- <li><b>[Date]</b>: Project update or news item will be displayed here. (e.g., Paper accepted, Code released)</li> -->
+              <li><b>May 2025</b>: M3CAD preprint released on <a href="https://arxiv.org/abs/2505.06746">arXiv</a>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--/ News. -->
+
+
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce M3CAD, a novel benchmark designed to advance research in generic cooperative autonomous driving. M3CAD comprises 204 sequences with 30k frames, spanning a diverse range of cooperative driving scenarios. Each sequence includes multiple vehicles and sensing modalities, e.g., LiDAR point clouds, RGB images, and GPS/IMU, supporting a variety of autonomous driving tasks, including object detection and tracking, mapping, motion forecasting, occupancy prediction, and path planning. This rich multimodal setup enables M3CAD to support both single-vehicle and multi-vehicle autonomous driving research, significantly broadening the scope of research in the field. To our knowledge, M3CAD is the most comprehensive benchmark specifically tailored for cooperative multi-task autonomous driving research. We evaluate the state-of-the-art end-to-end solution on M3CAD to establish baseline performance. To foster cooperative autonomous driving research, we also propose E2EC, a simple yet effective framework for cooperative driving solution that leverages inter-vehicle shared information for improved path planning. We release M3CAD, along with our baseline models and evaluation results, to support the development of robust cooperative autonomous driving systems.</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!--/ Paper Introduction. -->
+
+      <!-- Benchmark Comparison Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Benchmark Comparison</h2>
+          <div class="content has-text-justified">
+            <p>
+              M3CAD is comprehensively compared with existing autonomous driving benchmarks. The table highlights differences in Cooperation Type (CT), and supported tasks such as Object Detection (OD), Object Tracking (OT), Mapping (MP), Motion Forecasting (MF), Occupancy Prediction (OCC), and Path Planning (PP).
+            </p>
+          </div>
+          <img src="img/comparison_benchmark.png" alt="M3CAD Benchmark Comparison" style="max-width:100%; border-radius: 10px; box-shadow: 0 2px 8px #ccc;" />
+        </div>
+      </div>
+      <!--/ Benchmark Comparison Section -->
+
+      <!-- Performance Evaluation Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">UniAD Performance Evaluation</h2>
+          <div class="content has-text-justified">
+            <p>
+              We evaluate the UniAD model on M3CAD, comparing its performance across different stages and tasks.
+            </p>
+          </div>
+          <div>
+            <h3 class="title is-4">First Stage Performance</h3>
+            <div class="content has-text-justified">
+                <p>Comparison of UniAD's first stage performance on different benchmarks. S.:Single-vehicle tasks, C.: Cooperative tasks.</p>
+            </div>
+            <img src="img/fisrt_stage_comparison.png" alt="UniAD First Stage Performance" style="max-width:100%; border-radius: 10px; box-shadow: 0 2px 8px #ccc; margin-bottom: 20px;" />
+          </div>
+          <div>
+            <h3 class="title is-4">Second Stage Performance</h3>
+            <div class="content has-text-justified">
+                <p>Comparison of UniAD's second stage performance on different benchmarks. S.:Single-vehicle tasks, C.: Cooperative tasks.</p>
+            </div>
+            <img src="img/second_stage_comparison.png" alt="UniAD Second Stage Performance" style="max-width:100%; border-radius: 10px; box-shadow: 0 2px 8px #ccc;" />
+          </div>
+        </div>
+      </div>
+      <!--/ Performance Evaluation Section -->
+
+      <!-- E2E Framework. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">E2E Framework</h2>
+          <div class="content has-text-justified">
+            <p>
+              This section introduces the End-to-End (E2E) framework used in our project.
+            </p>
+          </div>
+          <img src="img/e2ec.png" alt="E2E Framework" style="max-width:100%" />
+        </div>
+      </div>
+      <!--/ E2E Framework. -->
+
+      <!-- Video -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video 🎬</h2>
+          <div class="publication-video">
+            <video width="800" controls loop autoplay muted style="border-radius: 10px; box-shadow: 0 2px 8px #ccc;">
+              <source src="video/m3cad_demo_video_h264.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concurrent Work. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Visual Comparison</h2>
+          <div class="content has-text-justified">
+            <p>
+              This section visually compares the performance of various autonomous driving tasks under non-cooperative and cooperative settings. 
+              Use the buttons below to switch between different tasks (Detection, Mapping, Motion Forecasting, Planning, Occupancy) and observe the improvements achieved through cooperation.
+            </p>
+          </div>
+
+          <h2 class="title is-4 has-text-centered" id="example1-title">Non-Cooperative vs. Cooperative Task Comparison</h2>
+
+          <!-- Tabs for Example -->
+          <div class="task-buttons has-text-centered" style="margin-bottom: 15px;">
+            <button class="button is-small is-link task-button" data-task="detection">Detection</button>
+            <button class="button is-small task-button" data-task="mapping">Mapping</button>
+            <button class="button is-small task-button" data-task="motion">Motion Forecasting</button>
+            <button class="button is-small task-button" data-task="planning">Planning</button>
+            <button class="button is-small task-button" data-task="occupancy">Occupancy</button>
+          </div>
+
+          <figure class="cd-image-container" id="example1-slider-container">
+            <img src="img/cooper_vs_ego/supply_ego/1497_det_pred_ego.jpg" alt="Non-Cooperative Detection" id="example1-original-img">
+            <span class="cd-image-label" data-type="original">
+            </span>
+
+            <div class="cd-resize-img"> <!-- the resizable image on top -->
+              <img src="img/cooper_vs_ego/supply_cooper/1497_det_pred_cooper.jpg" alt="Cooperative Detection" id="example1-modified-img">
+              <span class="cd-image-label" data-type="modified">
+              </span>
+            </div>
+
+            <span class="cd-handle"></span>
+          </figure> <!-- cd-image-container -->
+          
+          <!--
+          <h2 class="title is-4">Example 2: Placeholder Title</h2>
+          <figure class="cd-image-container">
+            <img src="./static/images/placeholder_comparison_A1.png" alt="Placeholder Image A1">
+            <span class="cd-image-label" data-type="original">
+            </span>
+
+            <div class="cd-resize-img"> 
+              <img src="./static/images/placeholder_comparison_A2.png" alt="Placeholder Image A2">
+              <span class="cd-image-label" data-type="modified">
+              </span>
+            </div>
+
+            <span class="cd-handle"></span>
+          </figure> 
+          -->
+
+        </div>
+      </div>
+      <!--/ Concurrent Work. -->
+
+      <!-- Concurrent Work. -->
+      <!--
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">A Closer Look: Placeholder Section Title</h2>
+          <div class="content has-text-justified">
+            <p>Placeholder text for this section, describing another set of visual comparisons or a deeper dive into a specific aspect.</p>
+          </div>
+          <h2 class="title is-4">Example A: Placeholder Title</h2>
+          <figure class="cd-image-container">
+            <img src="./static/images/placeholder_comparison_B1.png" alt="Placeholder Image B1">
+            <span class="cd-image-label" data-type="original">
+            </span>
+
+            <div class="cd-resize-img"> 
+              <img src="./static/images/placeholder_comparison_B2.png" alt="Placeholder Image B2">
+              <span class="cd-image-label" data-type="modified">
+              </span>
+            </div>
+
+            <span class="cd-handle"></span>
+          </figure> 
+          <h2 class="title is-4">Example B: Placeholder Title</h2>
+          <figure class="cd-image-container">
+            <img src="./static/images/placeholder_comparison_C1.png" alt="Placeholder Image C1">
+            <span class="cd-image-label" data-type="original">
+            </span>
+
+            <div class="cd-resize-img"> 
+              <img src="./static/images/placeholder_comparison_C2.png" alt="Placeholder Image C2">
+              <span class="cd-image-label" data-type="modified">
+              </span>
+            </div>
+
+            <span class="cd-handle"></span>
+          </figure> 
+        </div>
+      </div>
+      -->
+      <!--/ Concurrent Work. -->
+
+      <!-- Paper. -->
+      <!-- 
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Conference Paper</h2>
+          <div class="content has-text-justified">
+            <p>
+              Placeholder text for conference paper. This section can be updated when the paper is accepted and published at a conference. 
+              Details about the conference, presentation, and any awards can be added here.
+            </p>
+          </div>
+          <a href="#"><img src="./static/images/placeholder_paper_preview.png" alt="Placeholder Paper Preview"/></a>
+        </div>
+      </div>
+      -->
+      <!--/ Paper. -->
+
+      <!-- Poster. -->
+      <!--
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Conference Poster</h2>
+          <a href="#"><img src="./static/images/placeholder_poster_preview.png" alt="Placeholder Poster Preview"/></a>
+          <div class="content has-text-justified">
+            <p>
+              Placeholder text for conference poster. A link to the poster PDF and a preview image can be placed here.
+            </p>
+          </div>
+        </div>
+      </div>
+      -->
+      <!--/ Poster. -->
+
+      <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+          <h2 class="title">BibTeX 🙏</h2>
+          <pre><code>@misc{zhu2025m3cad,
+      title={M3CAD: Towards Generic Cooperative Autonomous Driving Benchmark}, 
+      author={Morui Zhu and Yongqi Zhu and Yihao Zhu and Qi Chen and Deyuan Qu and Song Fu and Qing Yang},
+      year={2025},
+      eprint={2505.06746},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}</code></pre>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="content">
+                <p>
+                  This website is licensed under a <a rel="license"
+                    href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                    Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+                <p>
+                  The website template was adapted from a publicly available academic page template.
+                  <!-- Original attribution commented out: It borrows the source code of <a href="https://github.com/nerfies/nerfies.github.io">this website</a>.
+                  We would like to thank Utkarsh Sinha and Keunhong Park. -->
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery.mobile.custom.min.js"></script> <!-- Resource jQuery -->
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const taskButtonsContainer = document.querySelector('.task-buttons');
+    if (!taskButtonsContainer) return;
+
+    const example1Title = document.getElementById('example1-title');
+    const originalImg = document.getElementById('example1-original-img');
+    const modifiedImg = document.getElementById('example1-modified-img');
+    
+    // Set a generic title that doesn't change with task selection
+    if (example1Title) example1Title.textContent = "Non-Cooperative vs. Cooperative Task Comparison";
+
+    // Default to Detection images on load
+    if (originalImg) {
+      originalImg.src = "img/cooper_vs_ego/supply_ego/1497_det_pred_ego.jpg";
+      originalImg.alt = "Non-Cooperative Detection";
+    }
+    if (modifiedImg) {
+      modifiedImg.src = "img/cooper_vs_ego/supply_cooper/1497_det_pred_cooper.jpg";
+      modifiedImg.alt = "Cooperative Detection";
+    }
+
+    const imageSources = {
+        detection: {
+            // title: "Example 1: Non-Cooperative vs. Cooperative Detection", // Title will be static now
+            original: "img/cooper_vs_ego/supply_ego/1497_det_pred_ego.jpg",
+            modified: "img/cooper_vs_ego/supply_cooper/1497_det_pred_cooper.jpg",
+            alt_original: "Non-Cooperative Detection",
+            alt_modified: "Cooperative Detection"
+        },
+        mapping: {
+            // title: "Example 1: Non-Cooperative vs. Cooperative Mapping",
+            original: "img/cooper_vs_ego/supply_ego/1497_map_pred_ego.jpg",
+            modified: "img/cooper_vs_ego/supply_cooper/1497_map_pred_cooper.jpg",
+            alt_original: "Non-Cooperative Mapping",
+            alt_modified: "Cooperative Mapping"
+        },
+        motion: {
+            // title: "Example 1: Non-Cooperative vs. Cooperative Motion Forecasting",
+            original: "img/cooper_vs_ego/supply_ego/1497_motion_pred_ego.jpg",
+            modified: "img/cooper_vs_ego/supply_cooper/1497_motion_pred_cooper.jpg",
+            alt_original: "Non-Cooperative Motion Forecasting",
+            alt_modified: "Cooperative Motion Forecasting"
+        },
+        planning: {
+            // title: "Example 1: Non-Cooperative vs. Cooperative Planning",
+            original: "img/cooper_vs_ego/supply_ego/1497_plan_pred_ego.jpg",
+            modified: "img/cooper_vs_ego/supply_cooper/1497_plan_pred_cooper.jpg",
+            alt_original: "Non-Cooperative Planning",
+            alt_modified: "Cooperative Planning"
+        },
+        occupancy: { 
+            // title: "Example 1: Non-Cooperative vs. Cooperative Occupancy Prediction",
+            original: "img/cooper_vs_ego/supply_ego/1497_occ_pred_ego.jpg",
+            modified: "img/cooper_vs_ego/supply_cooper/1497_occ_pred_cooper.jpg",
+            alt_original: "Non-Cooperative Occupancy Prediction",
+            alt_modified: "Cooperative Occupancy Prediction"
+        }
+    };
+
+    taskButtonsContainer.addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON' && event.target.classList.contains('task-button')) {
+            const task = event.target.dataset.task;
+            if (imageSources[task] && originalImg && modifiedImg && example1Title) {
+                // example1Title.textContent = imageSources[task].title; // Title is now static
+                originalImg.src = imageSources[task].original;
+                originalImg.alt = imageSources[task].alt_original;
+                modifiedImg.src = imageSources[task].modified;
+                modifiedImg.alt = imageSources[task].alt_modified;
+
+                taskButtonsContainer.querySelectorAll('.task-button').forEach(btn => {
+                    btn.classList.remove('is-link');
+                });
+                event.target.classList.add('is-link');
+
+                // The existing main.js initializes sliders. We hope that changing src
+                // attributes is enough for the slider to continue working correctly.
+                // If the slider behavior is off (e.g., dimensions, handle position),
+                // it might need a more direct re-initialization, which could be complex
+                // without modifying main.js or having a public API for the slider.
+            }
+        }
+    });
+});
+</script>
+</html>
