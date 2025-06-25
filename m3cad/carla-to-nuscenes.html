@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="CARLA-to-nuScenes: Data Format Conversion Tool">
+  <meta name="keywords" content="CARLA, nuScenes, Data Conversion, Autonomous Driving, OpenCOOD">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CARLA-to-nuScenes: Data Format Conversion Tool</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <style>
+    .code-block {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+    }
+    
+    .feature-box {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .step-number {
+      background: #3273dc;
+      color: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">CARLA-to-nuScenes</h1>
+            <h2 class="title is-3 publication-title">Data Format Conversion Tool</h2>
+            <p class="subtitle is-5" style="color: #5c5c5c; margin-top: 20px;">
+              Convert CARLA simulation data to nuScenes format for seamless integration with autonomous driving frameworks
+            </p>
+            
+            <!-- Navigation back to main page -->
+            <div style="margin-top: 30px;">
+              <a href="index.html" class="button is-primary is-medium">
+                <span class="icon">
+                  <i class="fas fa-arrow-left"></i>
+                </span>
+                <span>Back to Main</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      
+      <!-- Overview -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Overview</h2>
+          <div class="content has-text-justified">
+            <p>
+              We provide a powerful data conversion tool that can transform data collected from the CARLA simulator into nuScenes format.
+              This tool supports multiple data modalities including LiDAR point clouds, RGB images, GPS/IMU data, and more,
+              enabling researchers to conduct autonomous driving research under a unified data format.
+            </p>
+            
+            <p>
+              Currently, CARLA-collected data supports the <strong>OpenCOOD format</strong>, which is a data format specifically designed for cooperative perception.
+              Through our conversion tool, you can easily convert this data to the widely-used nuScenes format,
+              allowing you to leverage existing models and tools in the nuScenes ecosystem.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Features -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Key Features</h2>
+          
+          <div class="feature-box">
+            <h3 class="title is-5">
+              <span class="icon has-text-primary">
+                <i class="fas fa-exchange-alt"></i>
+              </span>
+              Multi-Format Support
+            </h3>
+            <p class="has-text-justified">
+              Support complete conversion from OpenCOOD format to nuScenes format while maintaining data integrity and annotation accuracy.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <h3 class="title is-5">
+              <span class="icon has-text-success">
+                <i class="fas fa-cubes"></i>
+              </span>
+              Multi-Modal Data
+            </h3>
+            <p class="has-text-justified">
+              Convert LiDAR point clouds, RGB images, radar data, GPS/IMU sensor data, and corresponding annotation information.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <h3 class="title is-5">
+              <span class="icon has-text-info">
+                <i class="fas fa-users"></i>
+              </span>
+              Cooperative Scenarios
+            </h3>
+            <p class="has-text-justified">
+              Specifically optimized for multi-vehicle cooperative scenario data conversion, supporting coordinate frame transformations and temporal synchronization between vehicles.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <h3 class="title is-5">
+              <span class="icon has-text-warning">
+                <i class="fas fa-cogs"></i>
+              </span>
+              Easy Integration
+            </h3>
+            <p class="has-text-justified">
+              Provides simple APIs and configuration files that can be quickly integrated into existing data processing pipelines.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supported Data Types -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Supported Data Types</h2>
+          <div class="content has-text-justified">
+            <div class="columns">
+              <div class="column">
+                <h4 class="title is-5">Sensor Data</h4>
+                <ul>
+                  <li>LiDAR Point Clouds (.pcd/.bin)</li>
+                  <li>RGB Camera Images (.png/.jpg)</li>
+                  <li>Depth Images</li>
+                  <li>Semantic Segmentation Images</li>
+                  <li>Radar Data</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h4 class="title is-5">Annotation Data</h4>
+                <ul>
+                  <li>3D Bounding Boxes</li>
+                  <li>2D Bounding Boxes</li>
+                  <li>Object Trajectories</li>
+                  <li>Semantic Labels</li>
+                  <li>Instance Segmentation</li>
+                </ul>
+              </div>
+              <div class="column">
+                <h4 class="title is-5">Metadata</h4>
+                <ul>
+                  <li>GPS/IMU Data</li>
+                  <li>Vehicle Poses</li>
+                  <li>Sensor Calibration</li>
+                  <li>Timestamps</li>
+                  <li>Scene Descriptions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usage Guide -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Usage Guide</h2>
+          
+          <div class="content has-text-justified">
+            <p>
+              We provide data conversion services to transform your CARLA data into nuScenes format. 
+              Contact us with your dataset details and conversion requirements.
+            </p>
+            
+            <div class="feature-box">
+              <div class="columns">
+                <div class="column">
+                  <div class="has-text-centered">
+                    <h5 class="title is-6">Morui Zhu</h5>
+                    <a href="mailto:moruizhu@my.unt.edu" class="button is-primary">
+                      <span class="icon">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <span>moruizhu@my.unt.edu</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="has-text-centered">
+                    <h5 class="title is-6">Qing Yang</h5>
+                    <a href="mailto:Qing.Yang@unt.edu" class="button is-info">
+                      <span class="icon">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <span>Qing.Yang@unt.edu</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="notification is-info">
+              <p><strong>Please include in your email:</strong></p>
+              <ul>
+                <li>Dataset description (size, scenarios, sensors)</li>
+                <li>Current data format and desired specifications</li>
+                <li>Timeline and any special requirements</li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html> 
