@@ -3,108 +3,57 @@
   contents:
     - name: Full Name
       value: Morui Zhu
+    - name: Email
+      value: morui.zhu@unt.edu
     - name: Languages
       value: Chinese (Native), English (Fluent)
-
 
 - title: Education
   type: time_table
   contents:
-    - title: "Master’s in Computer Science (GPA: 3.6/4)"
+    - title: Doctor of Philosophy (PhD), Computer Science
+      institution: University of North Texas, Denton, TX, USA
+      year: 8.2024 - Now
+      supervisor: Prof. Qing Yang
+      description:
+        - "Research focus: Multi-modal scene understanding and cooperative autonomous driving."
+    - title: Master's in Computer Science (Excellent with highest honours)
       institution: Budapest University of Technology and Economics, Budapest, Hungary
-      year: 2.2022 – 1.2024
-      description:
-        - Supported by Stipendium Hungaricum Scholarship
-        - title: Related Courses
-          contents:
-            - "Computer Vision Systems: 5/5"
-            - "GPGPU Applications: 5/5"
-            - "High Performance Parallel Computing: 5/5"
-            - "Parallel Programming Laboratory: 5/5"
-            - "Information Theory: 5/5"
-    - title: Bachelor’s degree in Engineering
+      year: 2.2022 - 1.2024
+    - title: Bachelor's degree in Chemical Engineering
       institution: Southwest University, Chongqing, China
-      year: 9.2017 – 7.2021
-
-
-- title: Research Experiences
-  type: time_table
-  contents:
-    - title: NeRF Models in Virtual Reality Environment (Master’s thesis)
-      institution: Budapest University of Technology and Economics, Budapest
-      year: 4.2023 - 1.2024
-      department: Vision Lab at the Department of Control Engineering and Information Technology (IIT)
-      department_link: https://deeplearning.iit.bme.hu/en/
-      supervisor: Dr. Szántó Mátyás
-      supervisor_link: https://www.iit.bme.hu/users/dr-sz%C3%A1nt%C3%B3-m%C3%A1ty%C3%A1s
-      description:
-        - Presented a crowdsourcing and mapping pipeline that enables the generation of accurate neural radiance field (NeRF) maps from camera feeds of autonomous vehicles.
-        - Compared four different models (Nerfacto, TensoRF, Instant-NGP, 3D Gaussian Splatting), and evaluate the accuracy of the reconstructions based on the number of acquisition vehicles and trajectory variations.
-        - Demonstrated interactive visualization of the NeRF maps in a Virtual Reality environment.
-
-
-    - title: Remote Sensing for Earth Observation (Lab Project)
-      institution: Institute for Computer Science and Control (SZTAKI), Budapest, Hungary
-      year: 3.2022 - 3.2023
-      supervisor: Dr. Chang Liu
-      description:
-        - Built a large, multi-temporal dataset on a global scale for removing clouds and cloud shadows from satellite imagery.
-        - Demonstrated the effectiveness of cooperation between drones and satellites with multispectral images in an early wildfire monitoring and rescue system.
-
-    - title: Computer Vision-Based Assistance System (Bachelor’s Thesis) 
-      institution: Southwest University, Chongqing, China
-      year: 5.2018 – 9.2021
-      department: Process Systems Engineering Laboratory
-      supervisor: Prof. Hao Zhang
-      supervisor_link: https://github.com/Pau0031
-      description:
-        - Designed a Real-Time computer vision-based lab assistance system.
-        - Implemented an indoor uncontrolled fire detection method.
-        - Implemented a deep learning algorithm for indoor scene understanding.
-
-    - title: Deep Retinal Image Understanding (Summer Project) 
-      institution:  University of Miami, Florida, USA
-      year: 7.2020 - 9.2020
-      department:  Department of Electrical and Computer Engineering
-      supervisor:  Prof. Mohamed Abdel-Mottaleb
-      supervisor_link: https://people.miami.edu/profile/b4062526410b2477325ca25241f580f1
-      description:
-        - Demonstrated visual explanation on U-Net based on Grad-CAM method.
-        - Found the bottom neck layers in CNN and improved the accuracy in classification task.
-
+      year: 9.2017 - 7.2021
 
 - title: Skills
   type: nested_list
   contents:
     - title: Languages
-      items: 
+      items:
         - Python
         - C/C++
         - MATLAB
-    - title: Interfaces
-      items:
-        - Message Passing Interface (MPI)
-    - title: ML & DL Libraries
+    - title: Libraries
       items:
         - PyTorch
         - TensorFlow
         - Scikit-learn
-        - Pandas
-        - Numpy
-        - Matplotlib
-    - title: Others
+        - OpenCV
+    - title: Tools
       items:
         - Git
-        - Linux
-        - LaTeX
-    - title: Computer Graphics
+        - Docker
+        - SLURM
+    - title: Simulation
       items:
-        - OpenGL
+        - CARLA
+        - Unreal Engine 5
+    - title: Graphics/3D
+      items:
         - Open3D
+        - OpenGL
 
-- title: Hobbies
+- title: Additional Experiences
   type: list
   contents:
-    - Cycling
-    - Hiking
-    - Photography
+    - Wolfram Student Ambassador, Southwest University (2019 - 2021)
+    - Probabilistic Numerics Spring School, University of Tübingen (2023)

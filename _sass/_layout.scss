@@ -33,6 +33,13 @@ body.sticky-bottom-footer {
   }
 }
 
+// Use a subtler, smaller avatar on the about page.
+.profile img[alt="avatar.jpg"] {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
 // TODO: redefine content layout.
 
 

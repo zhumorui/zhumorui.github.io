@@ -9,3 +9,6 @@ _site
 Gemfile.lock
 vendor
 
+# Private CV files (do not commit)
+CV*.pdf
+assets/pdf/CV*.pdf
