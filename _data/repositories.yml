@@ -2,6 +2,7 @@ github_users:
   - zhumorui
 
 github_repos:
+  - zhumorui/dCAP
   - zhumorui/M3CAD
   - zhumorui/BibExplorer
   - zhumorui/PixelGaussian
