@@ -1,0 +1,121 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  aspectRatio?: string;
+  poster?: string;
+}
+
+const { src, title, aspectRatio = "16 / 9", poster } = Astro.props;
+---
+
+<figure class="demo-embed my-6" data-src={src} style={`aspect-ratio: ${aspectRatio};`}>
+  <div
+    class="demo-placeholder"
+    style={poster ? `background-image: url(${poster}); background-size: cover; background-position: center;` : ""}
+  >
+    <button type="button" class="demo-load-btn">▶ Load interactive demo</button>
+    <span class="demo-hint">WebGPU / Three.js — runs entirely in your browser</span>
+  </div>
+  <figcaption class="demo-caption">
+    <span>{title}</span>
+    <a href={src} target="_blank" rel="noopener">Open fullscreen ↗</a>
+  </figcaption>
+</figure>
+
+<style>
+  .demo-embed {
+    position: relative;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: #000;
+  }
+  .demo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #0a0f1a;
+  }
+  .demo-load-btn {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .demo-load-btn:hover {
+    background: rgba(30, 60, 90, 0.75);
+  }
+  .demo-hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+  }
+  /* iframe is created dynamically in the script, so it needs a global rule */
+  :global(.demo-embed iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .demo-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+  }
+  .demo-caption a {
+    pointer-events: auto;
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.9);
+  }
+</style>
+
+<script>
+  function initDemoEmbeds() {
+    document.querySelectorAll<HTMLElement>(".demo-embed:not([data-init])").forEach((el) => {
+      el.dataset.init = "1";
+      const load = () => {
+        if (el.querySelector("iframe")) return;
+        const iframe = document.createElement("iframe");
+        let src = el.dataset.src ?? "";
+        // Dev server doesn't resolve directory indexes for public/ assets
+        if (src.endsWith("/")) src += "index.html";
+        iframe.src = src;
+        iframe.loading = "lazy";
+        iframe.allow = "fullscreen";
+        iframe.allowFullscreen = true;
+        el.querySelector(".demo-placeholder")?.remove();
+        el.insertBefore(iframe, el.querySelector(".demo-caption"));
+      };
+      el.querySelector(".demo-load-btn")?.addEventListener("click", load);
+      // Auto-load when the demo scrolls well into view
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            load();
+            io.disconnect();
+          }
+        },
+        { threshold: 0.4 },
+      );
+      io.observe(el);
+    });
+  }
+  initDemoEmbeds();
+  document.addEventListener("astro:page-load", initDemoEmbeds);
+</script>

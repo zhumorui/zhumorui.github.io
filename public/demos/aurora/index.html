@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurora Simulation</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+      #app { display: block; width: 100vw; height: 100vh; }
+      #info {
+        position: fixed; left: 12px; bottom: 10px; margin: 0;
+        font: 12px/1.4 ui-monospace, Menlo, monospace; color: #8aa;
+        pointer-events: none; user-select: none; opacity: 0.7;
+      }
+      body.pure-mode #info,
+      body.pure-mode .lil-gui {
+        opacity: 0;
+        pointer-events: none;
+      }
+      body.pure-mode {
+        cursor: none;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-C18M6BcX.js"></script>
+  </head>
+  <body>
+    <canvas id="app"></canvas>
+    <p id="info">Aurora Simulation — drag to look around, scroll to move</p>
+  </body>
+</html>

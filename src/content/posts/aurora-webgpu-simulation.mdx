@@ -1,0 +1,28 @@
+---
+title: "Real-Time Aurora Borealis Simulation with WebGPU + Three.js"
+date: "2026-07-05"
+description: "A physically-grounded, real-time aurora simulation running entirely in the browser — WebGPU volume raymarching with Three.js TSL, no backend required. Try the interactive demo below."
+author: "Morui Zhu"
+tags:
+  - "WebGPU"
+  - "Three.js"
+  - "Graphics"
+  - "Visualization"
+---
+
+import DemoEmbed from "../../components/DemoEmbed.astro";
+
+Auroras are produced by charged particles from the solar wind precipitating along Earth's magnetic field lines and exciting atmospheric oxygen and nitrogen between roughly 90 and 280 km altitude. This demo reproduces that look with a **physically-grounded emission model**, rendered in real time in your browser.
+
+<DemoEmbed src="/demos/aurora/" title="Aurora Simulation — drag to orbit, scroll to move" />
+
+## How it works
+
+- **WebGPU rendering** via Three.js `WebGPURenderer` with automatic WebGL2 fallback, so it runs in any modern browser (Chrome/Edge use WebGPU natively; Safari and Firefox fall back to WebGL2).
+- **Volume raymarching**: each camera ray takes 72 adaptive steps through the aurora volume, written in TSL (Three.js Shader Language).
+- **Emission physics**: a precomputed color/luminance LUT models the characteristic oxygen green (557.7 nm), red (630 nm), and nitrogen blue/purple emission bands.
+- **HDR pipeline**: ACES filmic tone mapping with bloom, vignette, and film grain.
+
+Everything is static — there is no backend. The whole demo is ~235 KB of gzipped JavaScript plus a 1 KB lookup table, served straight from GitHub Pages.
+
+Interaction: **drag** to orbit the camera, **scroll** to move, and use the panel on the top right to switch presets (classic green, red-top storm, magenta lower border, …) or tune intensity, activity, and post-processing in real time.
