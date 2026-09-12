@@ -1,6 +1,11 @@
 ---
 name: "Morui Zhu"
 title: "PhD Student in Computer Science"
+experience:
+  - role: "Research Intern"
+    institution: "Toyota North America"
+    period: "May 2026 - Present"
+    description: "Internship · Mountain View, California, United States · On-site."
 education:
   - degree: "Doctor of Philosophy (PhD), Computer Science"
     institution: "University of North Texas, Denton, TX, USA"
