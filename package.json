@@ -6,8 +6,9 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "npm run sync:substack && astro dev",
+    "build": "npm run sync:substack && astro build",
+    "sync:substack": "node scripts/sync-substack.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
