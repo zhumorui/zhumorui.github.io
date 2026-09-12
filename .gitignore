@@ -25,5 +25,3 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# generated from Substack RSS at build time
-src/content/posts/substack-*.md

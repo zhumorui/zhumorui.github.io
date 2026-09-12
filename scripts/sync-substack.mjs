@@ -21,7 +21,14 @@ const yamlStr = (s) => JSON.stringify(s); // JSON strings are valid YAML
 export async function syncSubstack() {
   const posts = [];
   for (const feedUrl of FEEDS) {
-    const res = await fetch(feedUrl);
+    // Browser-like UA: Substack sits behind Cloudflare, which may block default agents
+    const res = await fetch(feedUrl, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36",
+        Accept: "application/rss+xml, application/xml, text/xml",
+      },
+    });
     if (!res.ok) throw new Error(`${feedUrl}: HTTP ${res.status}`);
     const xml = await res.text();
     for (const item of xml.match(/<item>[\s\S]*?<\/item>/g) ?? []) {
@@ -38,6 +45,12 @@ export async function syncSubstack() {
         image,
       });
     }
+  }
+
+  // Keep the committed fallback files if the fetch produced nothing
+  if (posts.length === 0) {
+    console.warn("[substack] feeds returned no posts; keeping committed files");
+    return;
   }
 
   mkdirSync(OUT_DIR, { recursive: true });
