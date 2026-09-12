@@ -6,6 +6,17 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
+import { safeSync } from './scripts/sync-substack.mjs';
+
+// Pull Substack posts at build time, regardless of how astro is invoked (CI included)
+const substackSync = {
+  name: 'substack-sync',
+  hooks: {
+    'astro:config:setup': async () => {
+      await safeSync();
+    },
+  },
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +35,7 @@ export default defineConfig({
   redirects: {
     '/repositories': '/projects',
     '/blog': '/posts',
-    '/blog/2025/vggt-visual-geometry-grounded-transformer': '/posts/vggt-visual-geometry-grounded-transformer',
+    '/blog/2025/vggt-visual-geometry-grounded-transformer': '/posts/substack-vggt-visual-geometry-grounded-transformer',
   },
-  integrations: [mdx(), sitemap()],
+  integrations: [substackSync, mdx(), sitemap()],
 });

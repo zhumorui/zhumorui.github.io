@@ -4,7 +4,10 @@ import { writeFileSync, mkdirSync, readdirSync, unlinkSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const FEEDS = ["https://odysseusai.substack.com/feed"];
+const FEEDS = [
+  "https://odysseusai.substack.com/feed",
+  "https://moruizhu1.substack.com/feed",
+];
 const OUT_DIR = join(dirname(fileURLToPath(import.meta.url)), "../src/content/posts");
 const PREFIX = "substack-";
 
@@ -15,7 +18,7 @@ const tag = (item, name) => {
 };
 const yamlStr = (s) => JSON.stringify(s); // JSON strings are valid YAML
 
-async function main() {
+export async function syncSubstack() {
   const posts = [];
   for (const feedUrl of FEEDS) {
     const res = await fetch(feedUrl);
@@ -62,7 +65,11 @@ async function main() {
   console.log(`[substack] synced ${posts.length} post(s)`);
 }
 
-main().catch((err) => {
-  // Never fail the build because a feed was unreachable
-  console.warn(`[substack] sync skipped: ${err.message}`);
-});
+// Never fail the build because a feed was unreachable
+export const safeSync = () =>
+  syncSubstack().catch((err) => console.warn(`[substack] sync skipped: ${err.message}`));
+
+// CLI usage: node scripts/sync-substack.mjs
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  await safeSync();
+}
