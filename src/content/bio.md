@@ -1,11 +1,13 @@
 ---
 name: "Morui Zhu"
 avatar: "images/avatar.jpg"
-shortBio: "PhD student in Computer Science at the University of North Texas, researching cooperative autonomous driving, 3D vision, and spatial intelligence."
+shortBio: "Third-year PhD candidate in CS at the University of North Texas; Research Intern at Toyota InfoTech Labs working on post-training data flywheel."
 institution: "University of North Texas, Denton, TX"
 ---
 
-Hi! I am a PhD student in Computer Science at the University of North Texas, advised by Prof. Qing Yang.
+Hi! I am a third-year PhD candidate in Computer Science at the University of North Texas, advised by Prof. Qing Yang.
+
+I am currently a Research Intern at **Toyota InfoTech Labs** (Mountain View, CA), where I work on the **post-training data flywheel** — mining and curating real-world driving data to continuously improve autonomous driving models after deployment.
 
 My research focuses on **cooperative and end-to-end autonomous driving**, **multi-agent perception-planning fusion**, **world modeling**, and **3D scene understanding**.
 
