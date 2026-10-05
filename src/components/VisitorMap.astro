@@ -1,0 +1,28 @@
+---
+// Live visitor globe (MapMyVisitors), shown in the sidebar on desktop.
+const WIDGET_ID = "asZuH4-3C1FSN3ugQTY4ntKr9PclU_hC4oKPt7xIdfQ";
+---
+
+<div class="visitor-map mt-4 flex justify-center w-full max-lg:hidden">
+  <script
+    type="text/javascript"
+    id="mmvst_globe"
+    src={`https://mapmyvisitors.com/globe.js?d=${WIDGET_ID}`}
+    is:inline
+    defer
+  ></script>
+</div>
+
+<style>
+  .visitor-map {
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .visitor-map :global(img),
+  .visitor-map :global(canvas) {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+  }
+</style>

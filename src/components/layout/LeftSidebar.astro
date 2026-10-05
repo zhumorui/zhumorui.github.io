@@ -3,6 +3,7 @@ import { SITE, SOCIALS, SOCIAL_ICONS } from "../../config";
 import { getCollection } from "astro:content";
 import Icon from "../ui/Icon.astro";
 import { Image } from 'astro:assets';
+import VisitorMap from "../VisitorMap.astro";
 
 const activeSocials = SOCIALS.filter((s) => s.isActive);
 const bioCollection = await getCollection("bio");
@@ -48,6 +49,7 @@ const bio = bioCollection[0]?.data;
                     </a>
                 ))}
             </div>
+            <VisitorMap />
         </div>
     </div>
 </aside>
