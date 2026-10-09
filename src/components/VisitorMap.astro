@@ -1,13 +1,14 @@
 ---
-// Live visitor globe (MapMyVisitors), shown in the sidebar on desktop.
-const WIDGET_ID = "asZuH4-3C1FSN3ugQTY4ntKr9PclU_hC4oKPt7xIdfQ";
+// Live visitor map (MapMyVisitors map widget), shown in the sidebar on desktop.
+// Snippet source of truth: mapmyvisitors.com dashboard -> project "https://zhumorui.github.io/" -> Code.
+const WIDGET_ID = "hFb-exuPxHUaoUI0sGozWFzO-WW9as0yt534gf4VhzI";
 ---
 
 <div class="visitor-map mt-4 flex justify-center w-full max-lg:hidden">
   <script
     type="text/javascript"
-    id="mmvst_globe"
-    src={`https://mapmyvisitors.com/globe.js?d=${WIDGET_ID}`}
+    id="mapmyvisitors"
+    src={`https://mapmyvisitors.com/map.js?d=${WIDGET_ID}&cl=ffffff&w=a`}
     is:inline
     defer
   ></script>
@@ -15,7 +16,7 @@ const WIDGET_ID = "asZuH4-3C1FSN3ugQTY4ntKr9PclU_hC4oKPt7xIdfQ";
 
 <style>
   .visitor-map {
-    max-width: 180px;
+    max-width: 200px;
     margin-left: auto;
     margin-right: auto;
   }
